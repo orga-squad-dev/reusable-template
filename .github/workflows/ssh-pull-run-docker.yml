@@ -45,7 +45,7 @@ jobs:
             docker rm -f $(docker ps -a | grep ${{ inputs.server_name }} | awk '{print $1}')
 
             echo Pull image
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.server_name }}:${{ inputs.image_tag }}
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_USERNAME }}:${{ inputs.image_tag }}
 
             echo Run new one
-            docker run -d -p 3000:80 --name squaddev ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.server_name }}:${{ inputs.image_tag }}
+            docker run -d -p 3000:80 --name squaddev ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.DOCKERHUB_USERNAME }}:${{ inputs.image_tag }}
