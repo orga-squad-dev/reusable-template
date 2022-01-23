@@ -14,10 +14,6 @@ on:
         type: string
 
     secrets:
-      dockerhub_token:
-        required: true
-      dockerhub_username:
-        required: true
       server:
         required: true
       serveur_user:
