@@ -25,14 +25,8 @@ on:
 
 jobs:
 
-  init:
-    name: Sub wfl
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo sub wfl
-
   prod:
-    name: ${{ inputs.server_name }}
+    name: Deployment on '${{ inputs.server_name }}' server
     runs-on: ubuntu-latest
     steps:
 
