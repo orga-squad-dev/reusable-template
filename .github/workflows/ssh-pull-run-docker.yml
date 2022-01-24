@@ -49,7 +49,7 @@ jobs:
             docker ps -a
 
             echo Delete image
-            docker rm -f $(docker ps -a | grep ${{ inputs.image_tag }} | awk '{print $1}')
+            docker rm -f $(docker ps -a | grep squaddev | awk '{print $1}')
 
             echo Pull image
             docker pull ${{ secrets.dockerhub_username }}/${{ secrets.dockerhub_username }}:${{ inputs.image_tag }}
