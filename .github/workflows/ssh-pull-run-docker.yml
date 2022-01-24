@@ -45,8 +45,11 @@ jobs:
             echo Login
             echo ${{ secrets.dockerhub_token }} | docker login -u ${{ secrets.dockerhub_username }} --password-stdin
 
+            echo List docker images on server
+            docker ps -a
+
             echo Delete image
-            docker rm -f $(docker ps -a | grep ${{ inputs.server_name }} | awk '{print $1}')
+            docker rm -f $(docker ps -a | grep ${{ inputs.image_tag }} | awk '{print $1}')
 
             echo Pull image
             docker pull ${{ secrets.dockerhub_username }}/${{ secrets.dockerhub_username }}:${{ inputs.image_tag }}
