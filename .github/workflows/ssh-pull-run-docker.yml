@@ -49,10 +49,10 @@ jobs:
             docker ps -a
 
             echo Delete image
-            docker rm -f $(docker ps -a | grep squaddev | awk '{print $1}')
+            docker rm -f $(docker ps -a | grep ${{ inputs.image_name }} | awk '{print $1}')
 
             echo Pull image
-            docker pull ${{ secrets.dockerhub_username }}/${{ secrets.dockerhub_username }}:${{ inputs.image_tag }}
+            docker pull ${{ secrets.dockerhub_username }}/${{ inputs.image_name }}:${{ inputs.image_tag }}
 
             echo Run new one
-            docker run -d -p 3000:80 --name squaddev ${{ secrets.dockerhub_username }}/squaddev:${{ inputs.image_tag }}
+            docker run -d -p 3000:80 --name ${{ inputs.image_name }} ${{ secrets.dockerhub_username }}/${{ inputs.image_name }}:${{ inputs.image_tag }}
